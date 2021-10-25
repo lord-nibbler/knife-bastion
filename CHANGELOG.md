@@ -1,3 +1,8 @@
+## 1.2.1 (Development)
+
+Features:
+  - Updates for chef client compatability
+
 ## 1.2.0 (Development)
 
 Features:
