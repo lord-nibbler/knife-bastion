@@ -9,6 +9,7 @@ class Chef
         @bastion_user    = Chef::Config[:knife][:bastion_user] || ENV['CHEF_USER'] || ENV['USER']
         @bastion_host    = Chef::Config[:knife][:bastion_host]
         @bastion_network = Chef::Config[:knife][:bastion_network]
+        @bastion_port    = Chef::Config[:knife][:bastion_port]
         @chef_host       = URI.parse(Chef::Config[:chef_server_url]).host
         @local_port      = Chef::Config[:knife][:bastion_local_port] || 4443
       end
@@ -27,7 +28,7 @@ class Chef
 
         # Verify tunnel destination
         bastion_ip_addr = Socket.getaddrinfo(@bastion_host, nil, :INET, :STREAM, Socket::IPPROTO_TCP).first[3]
-        dest_result = shell_out("lsof -an -p #{proxy_pid} -i4@#{bastion_ip_addr}:ssh")
+        dest_result = shell_out("lsof -an -p #{proxy_pid} -i4@#{bastion_ip_addr}:#{@bastion_port}")
         unless dest_result.status.success?
           ui.fatal "There is a process with PID #{proxy_pid} listening on port #{local_port}, but it does not look like a tunnel"
           abort
