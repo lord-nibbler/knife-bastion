@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.cert_chain    = ['certs/eligible.pem']
-  spec.signing_key   = File.expand_path("~/.ssh/gem-eligible.pem") if $0 =~ /gem\z/
+  #spec.signing_key   = File.expand_path("~/.ssh/gem-eligible.pem") if $0 =~ /gem\z/
 
   spec.add_runtime_dependency 'chef'
   spec.add_runtime_dependency 'highline'
