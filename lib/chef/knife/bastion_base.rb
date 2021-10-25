@@ -51,7 +51,7 @@ class Chef
         end
         if pid
           ui.info <<-INFO
-  *    Proxy PID: #{ui.color pid.to_s, [:bold, :white]}
+  *    Proxy PID: #{ui.color pid.to_s, :bold, :white}
           INFO
         end
       end
