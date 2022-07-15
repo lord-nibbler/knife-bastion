@@ -59,6 +59,7 @@ class Chef
       end
 
       def ssh_proxy_command(timeout)
+        ui.info "starting ssh on port #{@bastion_port}"
         cmd = [
           "/usr/bin/ssh",
           # go to background just before command execution
